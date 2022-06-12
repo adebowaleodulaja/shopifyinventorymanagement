@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>New Supplier</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .cont{
+            width: 350px;
+            padding: 10px 0px 15px 25px;
+        }
+        .inddiv{
+            padding: 15px 0px 0px 0px;
+        }
+        h1{
+            padding-left: 15px;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Add A New Supplier</h1><br>
+<div class="cont">
+    <form th:action="@{/saveSupplier}" th:object="${supplier}" method="post">
+        <div class="alert alert-success" role="alert" th:text="${success}" th:if="${success}"></div>
+        <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
+
+        <div class="inddiv">
+            <input type="text" th:field="*{name}" placeholder="Enter supplier name" required="required"
+                   class="form-control mb-4 col-4">
+        </div>
+
+        <div class="inddiv">
+            <input type="text" th:field="*{phoneNumber}" placeholder="Enter phone number" required="required"
+                   class="form-control mb-4 col-4">
+        </div>
+
+        <div class="inddiv">
+            <button type="submit" name="save" id="savesuplier" class="btn btn-primary btn-sm mb-3">Save</button>
+            <a th:href="@{/suppliers}" class="btn btn-primary btn-sm mb-3">Supplier</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

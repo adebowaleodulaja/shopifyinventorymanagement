@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopify Inventory System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container my-2">
+    <h1>Shopify Inventory Management System (v1.0.0)</h1>
+    <a th:href="@{/}" class="btn btn-primary btn-sm mb-3">Inventory</a>
+    <a th:href="@{/purchases}" class="btn btn-primary btn-sm mb-3">Purchases</a>
+    <a th:href="@{/orders}" class="btn btn-primary btn-sm mb-3">Orders</a>
+    <a th:href="@{/suppliers}" class="btn btn-primary btn-sm mb-3">Suppliers</a>
+    <div><br/><br/></div>
+    <a th:href="@{/addnewsupplier}" class="btn btn-primary btn-sm mb-3">Add New Supplier</a>
+    <table border="1" class="table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="supplier : ${supplierlist}">
+            <td th:text="${supplier.name}"></td>
+            <td th:text="${supplier.phoneNumber}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
