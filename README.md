@@ -1,5 +1,5 @@
 # Read Me First
-This file contains step-by-step guide on how to run this web application
+This file contains a step-by-step guide on how to run this web application
 
 ### How it works
 1. You can either create a Product (inventory) first or create a supplier, how however recommend you start with creating a few products.
