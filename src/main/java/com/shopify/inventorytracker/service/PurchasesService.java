@@ -20,4 +20,8 @@ public class PurchasesService {
         return purchasesRepository.findAll();
     }
 
+    public void deletePurchase(long id) {
+        purchasesRepository.deleteById(id);
+    }
+
 }

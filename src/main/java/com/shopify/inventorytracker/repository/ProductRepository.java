@@ -27,5 +27,5 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Transactional
     @Modifying
     @Query("UPDATE Product p SET p.serialNumber = :snumber, p.quantityReceived = :qreceived, p.minimumTolerance = :mtol, p.notify = :notif where p.id = :id")
-    void updateProduct(@Param(value = "snumber") String snumber, @Param(value = "qreceived") int qreceived, @Param(value = "mtol") int mtol, @Param(value = "notif") boolean notify, @Param(value = "id") long id);
+    void updateProduct(@Param(value = "snumber") String snumber, @Param(value = "qreceived") int qreceived, @Param(value = "mtol") int mtol, @Param(value = "notif") String notify, @Param(value = "id") long id);
 }

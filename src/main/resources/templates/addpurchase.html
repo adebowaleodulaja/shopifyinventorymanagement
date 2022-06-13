@@ -32,7 +32,6 @@
             <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
 
             <select name="supplierList" id="selSupplier" class="form-control mb-4 col-4" th:field="*{supplier.id}">
-                <!--option value="supplierChoice" disabled selected>Select a Supplier</option-->
                 <option th:each="supplier : ${suppliersOption}" th:value="${supplier.id}"
                         th:text="${supplier.name}"></option>
             </select>

@@ -21,10 +21,10 @@
                class="form-control mb-4 col-4">
         <input type="text" th:field="*{minimumTolerance}" required="required"
                class="form-control mb-4 col-4">
-        <select name="notify" id="enableNotify" class="form-control mb-4 col-4">
-            <option value="notifySelector" th:selected="${updateproduct.notify}"></option>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
+        <select name="notify" id="enableNotify" class="form-control mb-4 col-4" th:field="*{notify}">
+            <option th:value="*{notify}" th:text="*{notify}"></option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
         </select>
 
         <button type="submit" name="save" id="updateprod" class="btn btn-primary btn-sm mb-3">Update</button>

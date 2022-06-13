@@ -36,8 +36,12 @@ public class ProductService {
         productRepository.updateQuantityLeft(qntyleft, id);
     }
 
-    public void updateProduct(String snumber, int qreceived, int mtol, boolean notify, long id) {
+    public void updateProduct(String snumber, int qreceived, int mtol, String notify, long id) {
         productRepository.updateProduct(snumber, qreceived, mtol, notify, id);
+    }
+
+    public void deleteProduct(long id){
+        productRepository.deleteById(id);
     }
 
     public String checkProductName(Product product) {

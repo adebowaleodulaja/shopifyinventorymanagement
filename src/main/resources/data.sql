@@ -11,7 +11,7 @@ quantityReceived INT DEFAULT 0,
 quantityLeft INT DEFAULT 0,
 totalOrdered INT DEFAULT 0,
 minimumTolerance INT NOT NULL,
-notify BIT
+notify CHAR(15) DEFAULT 'No'
 );
 
 CREATE TABLE supplier (
@@ -42,11 +42,11 @@ CONSTRAINT fk_orders FOREIGN KEY (productId) REFERENCES products (id)
 
 INSERT INTO products(name,serialNumber,quantityReceived,quantityLeft,totalOrdered,minimumTolerance,notify)
 VALUES
-('Lexus i330','2345DEFHQREC',200,200,0,0,0),
-('Google Tablet','12345ABCEXYZ',1000,1000,0,50,1),
-('Shopify Speaker','SHP6453434FGH',50,50,0,0,0),
-('Phone Case','PHO8764534CFF',500,500,0,50,1),
-('Mini Dolby Speaker','MDS7745343HEE',200,200,0,0,0);
+('Lexus i330','2345DEFHQREC',200,200,0,0,'No'),
+('Google Tablet','12345ABCEXYZ',1000,1000,0,50,'Yes'),
+('Shopify Speaker','SHP6453434FGH',50,50,0,0,'No'),
+('Phone Case','PHO8764534CFF',500,500,0,50,'Yes'),
+('Mini Dolby Speaker','MDS7745343HEE',200,200,0,0,'No');
 
 INSERT INTO supplier(name, phoneNumber)
 VALUES

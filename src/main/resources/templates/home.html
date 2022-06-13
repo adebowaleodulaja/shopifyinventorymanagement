@@ -38,7 +38,10 @@
             <td th:text="${product.totalOrdered}"></td>
             <td th:text="${product.minimumTolerance}"></td>
             <td th:text="${product.notify}"></td>
-            <td><a th:href="@{/updateProduct/{id}(id=${product.id})}" class="btn btn-primary btn-sm mb-3">Update</a></td>
+            <td>
+                <a th:href="@{/updateProduct/{id}(id=${product.id})}" class="btn btn-primary btn-sm mb-3">Update</a>
+                <a th:href="@{/deleteProduct/{id}(id=${product.id})}" class="btn btn-primary btn-danger mb-3">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>

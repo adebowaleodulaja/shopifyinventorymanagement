@@ -1,7 +1,11 @@
 package com.shopify.inventorytracker.controller;
 
+import com.shopify.inventorytracker.model.DeletedProduct;
 import com.shopify.inventorytracker.model.Product;
+import com.shopify.inventorytracker.repository.PurchasesRepository;
+import com.shopify.inventorytracker.service.DeletedProductService;
 import com.shopify.inventorytracker.service.ProductService;
+import com.shopify.inventorytracker.service.PurchasesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +19,12 @@ public class ProductController {
 
     @Autowired
     ProductService productService;
+
+    @Autowired
+    DeletedProductService deletedProductService;
+
+    @Autowired
+    PurchasesService purchasesService;
 
     @GetMapping("/")
     public String displayAllProducts(Model model) {
@@ -61,9 +71,42 @@ public class ProductController {
     @PostMapping("/updateProduct")
     public String updateProduct(@ModelAttribute("updateproduct") Product product, RedirectAttributes redirectAttributes) {
         productService.updateProduct(product.getSerialNumber(), product.getQuantityReceived(), product.getMinimumTolerance(),
-                product.isNotify(), product.getId());
+                product.getNotify(), product.getId());
         redirectAttributes.addFlashAttribute("success", "Product was updated successfully");
 
+        return "redirect:/";
+    }
+
+    @GetMapping("/deleteProduct/{id}")
+    public String deleteProduct(@PathVariable(value = "id") long id, Model model) {
+        Optional<Product> findProduct = productService.findProduct(id);
+        if (findProduct.isPresent()) {
+            Product product = findProduct.get();
+            DeletedProduct deletedProduct = new DeletedProduct();
+            model.addAttribute("productodelte", product);
+            model.addAttribute("deleteproduct", deletedProduct);
+            return "deleteproduct";
+        }
+
+        return "";
+    }
+
+    @PostMapping("/deleteProduct")
+    public String deleteProduct(@ModelAttribute("deleteproduct") DeletedProduct deletedProduct, RedirectAttributes redirectAttributes) {
+        Optional<Product> getProduct = productService.findProduct(deletedProduct.getId());
+        int totalOrdered = 0, quantityLeft = 0;
+        if (getProduct.isPresent()) {
+            Product product = getProduct.get();
+            totalOrdered = product.getTotalOrdered();
+            quantityLeft = product.getQuantityLeft();
+        }
+        purchasesService.deletePurchase(deletedProduct.getId());
+        productService.deleteProduct(deletedProduct.getId());
+
+        deletedProduct.setTotalOrdered(totalOrdered);
+        deletedProduct.setQuantityLeft(quantityLeft);
+        deletedProductService.saveDeletedProduct(deletedProduct);
+        redirectAttributes.addFlashAttribute("success", "Product has been deleted.");
         return "redirect:/";
     }
 }

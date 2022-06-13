@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update A Product</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 style="color:#FD2F03; padding-top: 15px;">Are you sure you want to delete this product?</h1><br>
+    <form th:action="@{/deleteProduct}" th:object="${productodelte}" method="post">
+        <div class="alert alert-success" role="alert" th:text="${success}" th:if="${success}"></div>
+        <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
+
+        <input type="hidden" th:field="*{id}">
+        <input type="text" th:field="*{name}" disabled="disabled"
+               class="form-control mb-4 col-4">
+        <input type="text" th:field="*{serialNumber}" disabled="disabled"
+               class="form-control mb-4 col-4">
+        <input type="text" th:field="*{quantityReceived}" disabled="disabled"
+               class="form-control mb-4 col-4">
+        <input type="text" th:field="*{minimumTolerance}" disabled="disabled"
+               class="form-control mb-4 col-4">
+        <select name="notify" id="enableNotify" class="form-control mb-4 col-4" th:field="*{notify}" disabled="disabled">
+            <option th:value="*{notify}" th:text="*{notify}"></option>
+        </select>
+
+        <input type="hidden" th:field="*{name}">
+        <input type="hidden" th:field="*{serialNumber}" >
+        <input type="hidden" th:field="*{quantityReceived}" >
+        <input type="hidden" th:field="*{minimumTolerance}" >
+        <input type="hidden" th:field="*{notify}" >
+        <input type="text" th:field="${deleteproduct.comment}" required="required" placeholder="Enter deletion comment"
+               class="form-control mb-4 col-4">
+
+
+        <button type="submit" name="del" id="delproduct" class="btn btn-primary btn-danger btn-sm mb-3">Delete</button>
+        <a th:href="@{/}" class="btn btn-primary btn-bg mb-3">Cancel</a>
+    </form>
+</div>
+</body>
+</html>

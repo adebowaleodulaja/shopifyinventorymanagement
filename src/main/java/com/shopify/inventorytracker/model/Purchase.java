@@ -1,8 +1,6 @@
 package com.shopify.inventorytracker.model;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 @Entity
