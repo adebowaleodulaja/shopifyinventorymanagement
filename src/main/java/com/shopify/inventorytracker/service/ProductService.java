@@ -3,6 +3,7 @@ package com.shopify.inventorytracker.service;
 import com.shopify.inventorytracker.model.Product;
 import com.shopify.inventorytracker.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,6 +34,10 @@ public class ProductService {
 
     public void updateQuantityLeft(int qntyleft, long id) {
         productRepository.updateQuantityLeft(qntyleft, id);
+    }
+
+    public void updateProduct(String snumber, int qreceived, int mtol, boolean notify, long id) {
+        productRepository.updateProduct(snumber, qreceived, mtol, notify, id);
     }
 
     public String checkProductName(Product product) {

@@ -35,7 +35,7 @@ id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 customerFirstName VARCHAR(255) NOT NULL,
 customerLastName VARCHAR(255) NOT NULL,
 productId INT NOT NULL,
-orderAmount INT NOT NULL,
+orderQuantity INT NOT NULL,
 orderDate VARCHAR(255) NOT NULL,
 CONSTRAINT fk_orders FOREIGN KEY (productId) REFERENCES products (id)
 );
