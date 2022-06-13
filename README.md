@@ -13,5 +13,5 @@ This file contains step-by-step guide on how to run this web application
 2. Click the Run icon on the web page
 3. You can start testing.
 
-
+NB: It's recommended you open the web app in a separate tab for a smoother experience.
 
