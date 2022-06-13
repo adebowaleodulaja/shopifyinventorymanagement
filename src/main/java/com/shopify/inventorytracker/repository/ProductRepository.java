@@ -18,4 +18,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Modifying
     @Query("UPDATE Product p SET p.quantityReceived = :qreceived where p.id = :id")
     void updateQuantityReceived(@Param(value = "qreceived") int qntyreceived, @Param(value = "id") long id);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE Product p SET p.quantityLeft = :qntyleft where p.id = :id")
+    void updateQuantityLeft(@Param(value = "qntyleft") int qntyleft, @Param(value = "id") long id);
 }

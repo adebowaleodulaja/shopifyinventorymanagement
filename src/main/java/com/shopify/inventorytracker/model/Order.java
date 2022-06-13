@@ -16,20 +16,20 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "productid", referencedColumnName = "id")
     private Product product;
-    @Column(name = "orderamount")
-    private Integer orderAmount;
+    @Column(name = "orderquantity")
+    private Integer orderQuantity;
     @Column(name = "orderdate")
     private String orderDate;
 
     public Order() {
     }
 
-    public Order(int id, String customerFirstName, String customerLastName, Product product, Integer orderAmount, String orderDate) {
+    public Order(int id, String customerFirstName, String customerLastName, Product product, Integer orderQuantity, String orderDate) {
         this.id = id;
         this.customerFirstName = customerFirstName;
         this.customerLastName = customerLastName;
         this.product = product;
-        this.orderAmount = orderAmount;
+        this.orderQuantity = orderQuantity;
         this.orderDate = orderDate;
     }
 
@@ -65,12 +65,12 @@ public class Order {
         this.product = product;
     }
 
-    public Integer getOrderAmount() {
-        return orderAmount;
+    public Integer getOrderQuantity() {
+        return orderQuantity;
     }
 
-    public void setOrderAmount(Integer orderAmount) {
-        this.orderAmount = orderAmount;
+    public void setOrderQuantity(Integer orderQuantity) {
+        this.orderQuantity = orderQuantity;
     }
 
     public String getOrderDate() {
@@ -86,12 +86,12 @@ public class Order {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
-        return id == order.id && Objects.equals(customerFirstName, order.customerFirstName) && Objects.equals(customerLastName, order.customerLastName) && Objects.equals(product, order.product) && Objects.equals(orderAmount, order.orderAmount) && Objects.equals(orderDate, order.orderDate);
+        return id == order.id && Objects.equals(customerFirstName, order.customerFirstName) && Objects.equals(customerLastName, order.customerLastName) && Objects.equals(product, order.product) && Objects.equals(orderQuantity, order.orderQuantity) && Objects.equals(orderDate, order.orderDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, customerFirstName, customerLastName, product, orderAmount, orderDate);
+        return Objects.hash(id, customerFirstName, customerLastName, product, orderQuantity, orderDate);
     }
 
     @Override
@@ -101,7 +101,7 @@ public class Order {
                 ", customerFirstName='" + customerFirstName + '\'' +
                 ", customerLastName='" + customerLastName + '\'' +
                 ", productId=" + product +
-                ", orderAmount=" + orderAmount +
+                ", orderAmount=" + orderQuantity +
                 ", orderDate=" + orderDate +
                 '}';
     }

@@ -31,6 +31,10 @@ public class ProductService {
         productRepository.updateQuantityReceived(qntyreceived, id);
     }
 
+    public void updateQuantityLeft(int qntyleft, long id) {
+        productRepository.updateQuantityLeft(qntyleft, id);
+    }
+
     public String checkProductName(Product product) {
         String errorMessage = "";
         Product findProductByName = productRepository.findByName(product.getName());
