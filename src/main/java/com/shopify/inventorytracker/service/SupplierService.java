@@ -1,6 +1,5 @@
 package com.shopify.inventorytracker.service;
 
-import com.shopify.inventorytracker.model.Product;
 import com.shopify.inventorytracker.model.Supplier;
 import com.shopify.inventorytracker.repository.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
